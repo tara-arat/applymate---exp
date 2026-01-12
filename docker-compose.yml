@@ -1,0 +1,47 @@
+# Docker Compose for ApplyMate
+version: '3.8'
+
+services:
+  applymate:
+    build:
+      context: .
+      target: base
+    container_name: applymate
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount data directory for persistence
+      - ./data:/app/data
+      # Mount config for easy updates
+      - ./.env:/app/.env
+    environment:
+      - BROWSER_HEADLESS=True
+      - LOG_LEVEL=INFO
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Development service with hot-reload
+  applymate-dev:
+    build:
+      context: .
+      target: development
+    container_name: applymate-dev
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount entire project for development
+      - .:/app
+      # Exclude venv and cache
+      - /app/venv
+      - /app/__pycache__
+    environment:
+      - BROWSER_HEADLESS=False
+      - DEBUG=True
+      - LOG_LEVEL=DEBUG
+    command: streamlit run ui/app.py --server.address 0.0.0.0 --server.runOnSave true
+    profiles: ["dev"]

@@ -1,0 +1,35 @@
+# Core dependencies (Latest as of January 2026)
+streamlit>=1.32.0
+playwright>=1.42.0
+spacy>=3.7.2
+sqlalchemy>=2.0.25
+
+# Database
+aiosqlite>=0.20.0
+
+# Utilities
+python-dotenv>=1.0.1
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
+
+# Data processing
+pandas>=2.2.0
+
+# Logging and debugging
+loguru>=0.7.2
+
+# Date/time handling
+python-dateutil>=2.8.2
+
+# Development dependencies (recommended for production)
+# Testing
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+pytest-cov>=4.1.0
+
+# Code quality
+ruff>=0.2.0              # Fast linter/formatter (replaces black + flake8)
+mypy>=1.8.0              # Type checking
+
+# Pre-commit hooks
+pre-commit>=3.6.0
