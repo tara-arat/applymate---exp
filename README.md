@@ -30,11 +30,3 @@ applymate/
 - **spaCy** - NLP for field matching
 - **SQLAlchemy** - ORM
 
-
-
-
-This is a local-first, ethical application. Contributions that maintain these principles are welcome!
-
-## ⚠️ Disclaimer
-
-ApplyMate is designed to assist with legitimate job applications. Users are responsible for ensuring their use complies with the terms of service of job application platforms.
